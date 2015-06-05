@@ -22,13 +22,16 @@ limitations under the License.
 ************************************************************************************/
 
 #import "../Platform/OSX_PlatformObjc.h"
-#import "EegeoPlatform.h"
-#include "LatLongAltitude.h"
 
 using namespace OVR;
 using namespace OVR::OvrPlatform;
 
 @implementation OVRApp
+
+@synthesize
+    App = _App,
+    Platform = _Platform,
+    win = _win;
 
 - (void)dealloc
 {
@@ -50,11 +53,21 @@ using namespace OVR::OvrPlatform;
         // The platform attached to an app will be deleted by DestroyApplication.
         app->SetPlatformCore(platform);
         
-        _App = app;
-        _Platform = platform;
+        [self setApp:app];
+        [self setPlatform:platform];
         
-        const char* argv[] = {"OVRApp"};
-        int exitCode = app->OnStartup(1, argv);
+        NSArray* argArray = [[NSProcessInfo processInfo] arguments];
+        int argc = 0;
+        const char* argv[32];
+        
+        for(NSString * arg in argArray)
+        {
+            argv[argc++] = arg.UTF8String;
+            if(argc == sizeof(argv)/sizeof(argv[0]))
+                break;
+        }
+    
+        int exitCode = app->OnStartup(argc, argv);
         if (exitCode)
         {
             Application::DestroyApplication(app);
@@ -80,7 +93,7 @@ using namespace OVR::OvrPlatform;
 
 @end
 
-static int OVRKeyMap[][2] =
+static int KeyMap[][2] =
 {
     { NSDeleteFunctionKey,      OVR::Key_Delete },
     { '\t',       OVR::Key_Tab },
@@ -126,11 +139,11 @@ static KeyCode MapToKeyCode(wchar_t vk)
     }
     else
     {
-        for (unsigned i = 0; i< (sizeof(OVRKeyMap) / sizeof(OVRKeyMap[1])); i++)
+        for (unsigned i = 0; i< (sizeof(KeyMap) / sizeof(KeyMap[1])); i++)
         {
-            if (vk == OVRKeyMap[i][0])
+            if (vk == KeyMap[i][0])
             {
-                key = OVRKeyMap[i][1];
+                key = KeyMap[i][1];
                 break;
             }
         }
@@ -155,6 +168,12 @@ static int MapModifiers(unsigned long xmod)
 
 @implementation OVRView
 
+@synthesize
+    Platform = _Platform,
+    App = _App,
+    Modifiers = _Modifiers;
+
+
 -(BOOL) acceptsFirstResponder
 {
     return YES;
@@ -162,21 +181,6 @@ static int MapModifiers(unsigned long xmod)
 -(BOOL) acceptsFirstMouse:(NSEvent *)ev
 {
     return YES;
-}
-
--(NSOpenGLPixelFormat*)getPixelFormat
-{
-    return _PixelFormat;
-}
-
--(void)setApp:(OVR::OvrPlatform::Application *)app
-{
-    _App = app;
-}
-
--(void)setPlatform:(OVR::OvrPlatform::OSX::PlatformCore *)platform
-{
-    _Platform = platform;
 }
 
 +(CGDirectDisplayID) displayFromScreen:(NSScreen *)s
@@ -188,12 +192,14 @@ static int MapModifiers(unsigned long xmod)
 
 -(void) warpMouseToCenter
 {
-    NSPoint w;
-    w.x = _Platform->Width/2.0f;
-    w.y = _Platform->Height/2.0f;
-    w = [[self window] convertBaseToScreen:w];
+    NSRect w;
+    w.origin.x = _Platform->Width/2.0f;
+    w.origin.y = _Platform->Height/2.0f;
+    w.size.width = 0;
+    w.size.height = 0;
+    w = [[self window] convertRectToScreen:w]; // Note: this code previously used convertBaseToScreen, which is deprecated.
     CGDirectDisplayID disp = [OVRView displayFromScreen:[[self window] screen]];
-    CGPoint p = {w.x, CGDisplayPixelsHigh(disp)-w.y};
+    CGPoint p = {w.origin.x, CGDisplayPixelsHigh(disp)-w.origin.y};
     CGDisplayMoveCursorToPoint(disp, p);
 }
 
@@ -233,7 +239,6 @@ static bool LookupKey(NSEvent* ev, wchar_t& ch, OVR::KeyCode& key, unsigned& mod
     }
     _App->OnKey(key, ch, true, mods);
 }
-
 -(void) keyUp:(NSEvent*)ev
 {
 	OVR::KeyCode key;
@@ -271,10 +276,6 @@ static const OVR::KeyCode ModifierKeys[] = {OVR::Key_None, OVR::Key_Shift, OVR::
     switch ([ev type])
     {
         case NSLeftMouseDragged:
-        {
-            NSPoint p = [ev locationInWindow];
-            _App->OnMouseDragged(p.x, p.y, MapModifiers([ev modifierFlags]));
-        }
         case NSRightMouseDragged:
         case NSOtherMouseDragged:
         case NSMouseMoved:
@@ -295,22 +296,13 @@ static const OVR::KeyCode ModifierKeys[] = {OVR::Key_None, OVR::Key_Shift, OVR::
                 NSPoint p = [ev locationInWindow];
                 _App->OnMouseMove(p.x, p.y, MapModifiers([ev modifierFlags]));
             }
+            break;
         }
-        break;
+        
         case NSLeftMouseDown:
-        {
-            NSPoint p = [ev locationInWindow];
-            _App->OnMouseDown(p.x, p.y, MapModifiers([ev modifierFlags]));
-            break;
-        }
-        case NSLeftMouseUp:
-        {
-            NSPoint p = [ev locationInWindow];
-            _App->OnMouseUp(p.x, p.y, MapModifiers([ev modifierFlags]));
-            break;
-        }
         case NSRightMouseDown:
         case NSOtherMouseDown:
+        default:
             break;
     }
 }
@@ -332,30 +324,32 @@ static const OVR::KeyCode ModifierKeys[] = {OVR::Key_None, OVR::Key_Shift, OVR::
         [NSCursor hide];
         _Platform->MMode = Mouse_Relative;
     }
-    [self ProcessMouse:ev];
-}
-
-- (void)mouseUp:(NSEvent *)ev
-{
-    [self ProcessMouse:ev];
 }
 
 //-(void)
 
--(id) initWithFrame:(NSRect)frameRect
+-(id) initWithFrame:(NSRect)frameRect renderParams:(const OVR::Render::RendererParams&)rp
 {
-    NSOpenGLPixelFormatAttribute attr[] =
-    {
-//        NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersion3_2Core,
-//        NSOpenGLPFAWindow,
-        NSOpenGLPFADoubleBuffer,
-        NSOpenGLPFADepthSize, 24,
-        NSOpenGLPFAStencilSize, 8,
-    };
+    NSOpenGLPixelFormatAttribute attr[8];
+    int attrSize = 0;
+    
+    // On OSX you can specify only a 3.2+ core profile or a pre-3.2 legacy profile.
+    // The code below passes NSOpenGLProfileVersion3_2Core to NSOpenGLPixelFormat, but the
+    // created OpenGL context will be a version >= 3.2, depending on what's installed.
+    // There is no support for compatiblity profiles or forward compatible profiles.
+    // Apple doesn't have any explicit support for debug contexts, so rp.
+    attr[attrSize++] = NSOpenGLPFAOpenGLProfile;
+    attr[attrSize++] = (((rp.GLMajorVersion * 100) + rp.GLMinorVersion) >= 302) ? NSOpenGLProfileVersion3_2Core : NSOpenGLProfileVersionLegacy;
+    
+    attr[attrSize++] = NSOpenGLPFADoubleBuffer;
+
+    attr[attrSize++] = NSOpenGLPFADepthSize;
+    attr[attrSize++] = 24;
+
+    attr[attrSize++] = 0;
+    
         
     NSOpenGLPixelFormat *pf = [[[NSOpenGLPixelFormat alloc] initWithAttributes:attr] autorelease];
-    
-    _PixelFormat = pf;
     
     self = [super initWithFrame:frameRect pixelFormat:pf];
     GLint swap = 0;
@@ -455,37 +449,14 @@ void* PlatformCore::SetupWindow(int w, int h)
     winrect.size.width = w;
     winrect.size.height = h;
     NSWindow* win = [[NSWindow alloc] initWithContentRect:winrect styleMask:NSTitledWindowMask|NSClosableWindowMask backing:NSBackingStoreBuffered defer:NO];
-    
-    OVRView* view = [[OVRView alloc] initWithFrame:winrect];
-    [view setPlatform:this];
-    [win setContentView:view];
-    [win setAcceptsMouseMovedEvents:YES];
-    [win setDelegate:view];
-    [view setApp:pApp];
-    
-    NSOpenGLPixelFormat* pixelFormat = [view getPixelFormat];
-    Eegeo::OVR::OVREegeoCameraController* cameraController = new Eegeo::OVR::OVREegeoCameraController(w, h);
-    pApp->SetOVREegeoCameraController(cameraController);
-    
-    Eegeo::Space::LatLongAltitude eyePosLla = Eegeo::Space::LatLongAltitude::FromDegrees(37.7858,-122.401, 100);
-
-    cameraController->SetStartLatLongAltitude(eyePosLla);
-
-    Eegeo::Rendering::ScreenProperties properties(w, h, 1, 100);
-    Eegeo::Platform* eegeoPlatform = new Eegeo::Platform(properties, pixelFormat);
-    pApp->SetEegeoPlatform(eegeoPlatform);
-    pApp->OnResize(w, h);
-    
-    cameraController->SetTerrainHeightProvider(&(eegeoPlatform->GetTerrainHeightProvider()));
-    
     Win = win;
-    View = view;
     return (void*)[win windowNumber];
 }
     
 void PlatformCore::SetWindowTitle(const char* title)
 {
-    [((NSWindow*)Win) setTitle:[[NSString alloc] initWithBytes:title length:strlen(title) encoding:NSUTF8StringEncoding]];
+    NSString* nsTitle = [[[NSString alloc] initWithBytes:title length:strlen(title) encoding:NSUTF8StringEncoding] autorelease];
+    [((NSWindow*)Win) setTitle:nsTitle];
 }
     
 void PlatformCore::ShowWindow(bool show)
@@ -505,8 +476,19 @@ void PlatformCore::DestroyWindow()
 RenderDevice* PlatformCore::SetupGraphics(const SetupGraphicsDeviceSet& setupGraphicsDesc,
                                           const char* type, const Render::RendererParams& rp)
 {
+    // We delay the creation of the OVRView for our window because the view init requires RenderParams.
+    NSWindow* win = (NSWindow*)Win;
+    NSRect winrect = [win contentRectForFrameRect:[win frame]];
+    OVRView* view = [[OVRView alloc] initWithFrame:winrect renderParams:rp];
+    [view setPlatform:this];
+    [win setContentView:view];
+    [win setAcceptsMouseMovedEvents:YES];
+    [win setDelegate:view];
+    [view setApp:pApp];
+    View = view;
+
     const SetupGraphicsDeviceSet* setupDesc = setupGraphicsDesc.PickSetupDevice(type);
-    OVR_ASSERT(setupDesc);
+    OVR_ASSERT(setupDesc && setupDesc->pCreateDevice);
         
     pRender = *setupDesc->pCreateDevice(rp, this);
     if (pRender)
@@ -515,7 +497,7 @@ RenderDevice* PlatformCore::SetupGraphics(const SetupGraphicsDeviceSet& setupGra
     return pRender.GetPtr();
 }
     
-int       PlatformCore::GetDisplayCount()
+int PlatformCore::GetDisplayCount()
 {
     return (int)[[NSScreen screens] count];
 }
@@ -561,7 +543,7 @@ ovrRenderAPIConfig RenderDevice::Get_ovrRenderAPIConfig() const
 {
     ovrRenderAPIConfig result = ovrRenderAPIConfig();
     result.Header.API = ovrRenderAPI_OpenGL;
-    result.Header.RTSize = Sizei(WindowWidth, WindowHeight);
+    result.Header.BackBufferSize = Sizei(WindowWidth, WindowHeight);
     result.Header.Multisample = Params.Multisample;
     return result;
 }
