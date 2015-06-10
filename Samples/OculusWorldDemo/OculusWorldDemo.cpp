@@ -23,9 +23,9 @@ limitations under the License.
 *************************************************************************************/
 
 #include "OculusWorldDemo.h"
-#include "Kernel/OVR_Threads.h"
-#include "Util/Util_SystemGUI.h"
-
+#include "Quaternion.h"
+#include "LatLongAltitude.h"
+#include "StreamingVolumeController.h"
 
 OVR_DISABLE_MSVC_WARNING(4996) // "scanf may be unsafe"
 
@@ -1140,30 +1140,6 @@ void OculusWorldDemoApp::OnKey(OVR::KeyCode key, int chr, bool down, int modifie
             break;
     case Key_Control:
         CtrlDown = down;
-        break;
-
-       // Reset the camera position in case we get stuck
-    case Key_T:
-        if (down)
-        {
-            struct {
-                float  x, z;
-                float  YawDegrees;
-            }  Positions[] =
-            {
-               // x         z           Yaw
-                { 7.7f,     -1.0f,      180.0f },   // The starting position.
-                { 10.0f,    10.0f,      90.0f  },   // Outside, looking at some trees.
-                { 19.26f,   5.43f,      22.0f  },   // Outside, looking at the fountain.
-            };
-
-            static int nextPosition = 0;
-            nextPosition = (nextPosition + 1) % (sizeof(Positions)/sizeof(Positions[0]));
-
-            ThePlayer.BodyPos = Vector3f(Positions[nextPosition].x,
-                                         ThePlayer.UserEyeHeight, Positions[nextPosition].z);
-            ThePlayer.BodyYaw = DegreeToRad( Positions[nextPosition].YawDegrees );
-        }
         break;
 
     case Key_BracketLeft: // Control-Shift-[  --> Test OVR_ASSERT

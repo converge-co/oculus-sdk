@@ -21,10 +21,10 @@ limitations under the License.
 
 ************************************************************************/
 
-
+#import <Cocoa/Cocoa.h>
 #import "OSX_Platform.h"
 #import "OSX_Gamepad.h"
-#import <Cocoa/Cocoa.h>
+
 #import <CoreGraphics/CoreGraphics.h>
 #import <CoreGraphics/CGDirectDisplay.h>
 

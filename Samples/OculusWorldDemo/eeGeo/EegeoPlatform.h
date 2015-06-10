@@ -1,6 +1,7 @@
 #pragma once
 
-#import <Foundation/Foundation.h>
+
+//#import <Foundation/Foundation.h>
 
 #include "Types.h"
 #include "Graphics.h"
@@ -30,7 +31,7 @@
 #include "RobotArm.h"
 
 //#import <OpenGL/OpenGL.h>
-
+#import <Cocoa/Cocoa.h>
 
 namespace Eegeo
 {
