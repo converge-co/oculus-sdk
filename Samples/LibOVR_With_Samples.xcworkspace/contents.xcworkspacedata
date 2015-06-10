@@ -2,9 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:OculusWorldDemo/Projects/Mac/Xcode/OculusWorldDemo.xcodeproj">
+      location = "group:../../../Desktop/OculusSDK 2/LibOVRKernel/Projects/Mac/LibOVRKernel.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../LibOVR/Projects/Mac/Xcode/LibOVR.xcodeproj">
+      location = "group:../../../Desktop/OculusSDK 2/LibOVR/Projects/Mac/LibOVR.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:OculusWorldDemo/Projects/Mac/Xcode/OculusWorldDemo.xcodeproj">
    </FileRef>
 </Workspace>

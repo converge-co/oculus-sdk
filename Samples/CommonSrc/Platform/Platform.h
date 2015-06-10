@@ -28,7 +28,11 @@ limitations under the License.
 
 #include "Kernel/OVR_KeyCodes.h"
 #include "Kernel/OVR_String.h"
+#include "OVREegeoCameraController.h"
 
+namespace Eegeo{
+    class Platform;
+}
 
 namespace OVR { namespace Render {
     class RenderDevice;
@@ -81,7 +85,7 @@ typedef RenderDevice* (*RenderDeviceCreateFunc)(const Render::RendererParams&, v
 // used to build up a list of RenderDevices that can be used for rendering.
 // Specifying a smaller set allows application to avoid linking unused graphics devices.
 struct SetupGraphicsDeviceSet
-{    
+{
     SetupGraphicsDeviceSet(const char* typeArg, RenderDeviceCreateFunc createFunc)
         : pTypeArg(typeArg), pCreateDevice(createFunc), pNext(0) { }
     SetupGraphicsDeviceSet(const char* typeArg, RenderDeviceCreateFunc createFunc,
@@ -92,7 +96,7 @@ struct SetupGraphicsDeviceSet
     const SetupGraphicsDeviceSet* PickSetupDevice(const char* typeArg) const;
 
     const char*               pTypeArg;
-    RenderDeviceCreateFunc    pCreateDevice;        
+    RenderDeviceCreateFunc    pCreateDevice;
 
 private:
     const SetupGraphicsDeviceSet*  pNext;
@@ -113,7 +117,7 @@ protected:
     Application*        pApp;
     Ptr<RenderDevice>   pRender;
     Ptr<GamepadManager> pGamepadManager;
-    double              StartupSeconds; 
+    double              StartupSeconds;
 
 public:
     PlatformCore(Application *app);
@@ -128,10 +132,10 @@ public:
     virtual void		Exit(int exitcode) = 0;
 
     virtual void		ShowWindow(bool visible) = 0;
-    
+
     virtual bool		SetFullscreen(const Render::RendererParams& rp, int fullscreen);
-   
-    // Search for a matching graphics renderer based on type argument and initializes it.    
+
+    // Search for a matching graphics renderer based on type argument and initializes it.
     virtual RenderDevice* SetupGraphics(const SetupGraphicsDeviceSet& setupGraphicsDesc,
                                         const char* gtype,
                                         const Render::RendererParams& rp) = 0;
@@ -144,10 +148,10 @@ public:
 	virtual void		PlayMusicFile(const char *fileName) { OVR_UNUSED(fileName); }
     virtual int			GetDisplayCount() { return 0; }
     virtual Render::DisplayId GetDisplay(int screen);
-    
+
     // Get time since start of application in seconds.
-    double				GetAppTime() const; 
-    
+    double				GetAppTime() const;
+
     virtual String		GetContentDirectory() const { return "."; }
 
     // Creates notification overlay text box over the top of OS window. Multiple
@@ -167,6 +171,8 @@ class Application : public NewOverrideBase
 {
 protected:
     class PlatformCore* pPlatform;
+    class Eegeo::Platform* pEegeoPlatform;
+    class Eegeo::OVR::OVREegeoCameraController* pCameraController;
 
 public:
     virtual ~Application() { }
@@ -186,6 +192,12 @@ public:
 
     void         SetPlatformCore(PlatformCore* p) { pPlatform = p; }
     PlatformCore* GetPlatformCore() const         { return pPlatform; }
+
+    void         SetEegeoPlatform(Eegeo::Platform* p) { pEegeoPlatform = p; }
+    Eegeo::Platform* GetEegeoPlatform()               { return pEegeoPlatform; }
+
+    void         SetOVREegeoCameraController(Eegeo::OVR::OVREegeoCameraController* a) { pCameraController = a; }
+    Eegeo::OVR::OVREegeoCameraController* GetOVREegeoCameraController()      { return pCameraController; }
 
 
     // Static functions defined by OVR_PLATFORM_APP and used to initialize and

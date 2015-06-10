@@ -1,0 +1,21 @@
+dependencies: \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_FileFILE.cpp \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_Types.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_Compiler.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_Nullptr.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_Log.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_Delegates.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_Callbacks.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_CallbacksInternal.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_Atomic.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_RefCount.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_Allocator.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_Array.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_ContainerAllocator.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_String.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_UTF8Util.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_Std.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_Alg.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_Hash.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_SysFile.h \
+  /Users/edave/repositories/oculus-sdk/LibOVRKernel/Src/Kernel/OVR_File.h

@@ -1,5 +1,7 @@
 #pragma once
 
+#import <Foundation/Foundation.h>
+
 #include "Types.h"
 #include "Graphics.h"
 #include "OSXFileIO.h"
@@ -28,7 +30,7 @@
 #include "RobotArm.h"
 
 //#import <OpenGL/OpenGL.h>
-#import <Cocoa/Cocoa.h>
+
 
 namespace Eegeo
 {

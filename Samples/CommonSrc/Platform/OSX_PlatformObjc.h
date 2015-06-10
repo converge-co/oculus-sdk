@@ -1,9 +1,9 @@
 /***********************************************************************
 
 Filename    :   OSX_PlatformObjc.h
-Content     :   
-Created     :   
-Authors     :   
+Content     :
+Created     :
+Authors     :
 
 Copyright   :   Copyright 2012 Oculus VR, LLC. All Rights reserved.
 
@@ -47,6 +47,7 @@ limitations under the License.
 {
     OVR::OvrPlatform::OSX::PlatformCore* _Platform;
     OVR::OvrPlatform::Application* _App;
+    NSOpenGLPixelFormat* _PixelFormat;
     unsigned long _Modifiers;
 }
 
@@ -56,6 +57,9 @@ limitations under the License.
 
 -(void)ProcessMouse:(NSEvent*)event;
 -(void)warpMouseToCenter;
+-(void)setApp:(OVR::OvrPlatform::Application*)app;
+-(void)setPlatform:(OVR::OvrPlatform::OSX::PlatformCore*)platform;
+-(NSOpenGLPixelFormat*)getPixelFormat;
 
 +(CGDirectDisplayID) displayFromScreen:(NSScreen*)s;
 

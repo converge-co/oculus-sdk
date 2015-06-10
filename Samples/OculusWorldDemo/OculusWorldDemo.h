@@ -4,7 +4,7 @@ Filename    :   OculusWorldDemo.h
 Content     :   First-person view test application for Oculus Rift - Header file
 Created     :   October 4, 2012
 Authors     :   Michael Antonov, Andrew Reisse, Steve LaValle, Dov Katz
-                Peter Hoff, Dan Goodman, Bryan Croteau                
+                Peter Hoff, Dan Goodman, Bryan Croteau
 
 Copyright   :   Copyright 2012 Oculus VR, LLC. All Rights reserved.
 
@@ -44,8 +44,9 @@ limitations under the License.
 #include "../CommonSrc/Util/OptionMenu.h"
 #include "../CommonSrc/Util/RenderProfiler.h"
 
-
 #include "Player.h"
+
+#include "EegeoPlatform.h"
 
 // Filename to be loaded by default, searching specified paths.
 #define WORLDDEMO_ASSET_FILE  "Tuscany.xml"
@@ -72,7 +73,7 @@ using namespace OVR::Render;
 //  'W', 'S', 'A', 'D' and Arrow Keys - Move forward, back; strafe left/right.
 //
 //  Space - Bring up status and help display.
-//  Tab   - Bring up/hide menu with editable options. 
+//  Tab   - Bring up/hide menu with editable options.
 //  F4    - Toggle MSAA.
 //  F9    - Cycle through fullscreen and windowed modes.
 //          Necessary for previewing content with Rift.
@@ -96,7 +97,7 @@ using namespace OVR::Render;
 //  - Graphics and HMD setup is done OculusWorldDemoApp::OnStartup(). Much of
 //    HMD configuration here is moved to CalculateHmdValues.
 //    OnStartup also creates the room model from Slab declarations.
-//    
+//
 //  - Per-frame processing is done in OnIdle(). This function processes
 //    sensor and movement input and then renders the frame.
 //
@@ -116,7 +117,7 @@ public:
     virtual void OnResize(int width, int height);
 
     bool         SetupWindowAndRendering(int argc, const char** argv);
-    
+
     // Adds room model to scene.
     void         InitMainFilePath();
     void         PopulateScene(const char* fileName);
@@ -137,7 +138,7 @@ public:
     void         RenderTextInfoHud(float textHeight);
     void         RenderAnimatedBlocks(ovrEyeType eye, double appTime);
     void         RenderGrid(ovrEyeType eye);
-    
+
     Matrix4f     CalculateViewFromPose(const Posef& pose);
 
     // Determine whether this frame needs rendering based on timewarp timing and flags.
@@ -149,7 +150,7 @@ public:
     Model*      CreateModel(Vector3f pos, struct SlabModel* sm);
     Model*      CreateBoundingModel(CollisionModel &cm);
     void        ChangeDisplay ( bool bBackToWindowed, bool bNextFullscreen, bool bFullWindowDebugging );
-    void        GamepadStateChanged(const GamepadState& pad);    
+    void        GamepadStateChanged(const GamepadState& pad);
 
     // Processes DeviceNotificationStatus queue to handles plug/unplug.
     void         ProcessDeviceNotificationQueue();
@@ -160,7 +161,7 @@ public:
     void HmdSettingChange(OptionVar* = 0)   { HmdSettingsChanged = true; }
     void MirrorSettingChange(OptionVar* = 0)
     { HmdSettingsChanged = true; NotificationTimeout = ovr_GetTimeInSeconds() + 10.0f;}
-    
+
     void BlockShowChange(OptionVar* = 0)    { BlocksCenter = ThePlayer.BodyPos; }
     void EyeHeightChange(OptionVar* = 0)
     {
@@ -187,7 +188,7 @@ protected:
     int                 FirstScreenInCycle;
     bool                SupportsSrgb;
     bool                SupportsMultisampling;
-    
+
     struct RenderTarget
     {
         Ptr<Texture>     pColorTex;
@@ -217,7 +218,7 @@ protected:
     ovrTexture          EyeDepthTexture[2];
     Sizei               EyeRenderSize[2];       // Saved render eye sizes; base for dynamic sizing.
     // Sensor caps applied.
-    unsigned            StartTrackingCaps;    
+    unsigned            StartTrackingCaps;
     bool                UsingDebugHmd;
 
     // Frame timing logic.
@@ -229,8 +230,8 @@ protected:
     double              LastFpsUpdate;
 
     // Times a single frame.
-    double              LastUpdate;         
-  
+    double              LastUpdate;
+
     // Loaded data.
     String	                    MainFilePath;
     Array<Ptr<CollisionModel> > CollisionModels;
@@ -250,10 +251,10 @@ protected:
     bool                HavePositionTracker;
     bool                HaveHMDConnected;
     bool                HaveSync;
-    
+
     double              LastSyncTime;
     unsigned int        LastCameraFrame;
-    
+
     GamepadState        LastGamepadState;
 
     Player				ThePlayer;
@@ -279,10 +280,10 @@ protected:
     ovrFrameTiming      HmdFrameTiming;
     unsigned            HmdStatus;
 
-    // Overlay notifications time out in 
+    // Overlay notifications time out in
     double              NotificationTimeout;
 
-    // ***** Modifiable Menu Options 
+    // ***** Modifiable Menu Options
 
     // This flag is set when HMD settings change, causing HMD to be re-initialized.
     bool                HmdSettingsChanged;
@@ -303,7 +304,7 @@ protected:
     MonoscopicMode      MonoscopicRenderMode;
     float               PositionTrackingScale;
     bool                ScaleAffectsEyeHeight;
-    float               DesiredPixelDensity;    
+    float               DesiredPixelDensity;
     float               FovSideTanMax;
     float               FovSideTanLimit; // Limit value for Fov.
     bool                FadedBorder;
@@ -338,7 +339,7 @@ protected:
     };
     TimewarpMode        TimewarpOption;
     bool                TimewarpJitDelayEnabled;
-    float               TimewarpRenderIntervalInSeconds;    
+    float               TimewarpRenderIntervalInSeconds;
     bool                FreezeEyeUpdate;
     bool                FreezeEyeOneFrameRendered;
     bool                ComputeShaderEnabled;
@@ -405,7 +406,7 @@ protected:
     {
         Text_None,
         Text_Info,
-        Text_Timing,        
+        Text_Timing,
         Text_Help1,
         Text_Help2,
         Text_Count

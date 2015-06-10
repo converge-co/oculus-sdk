@@ -10,6 +10,12 @@
 		183C006419B8BCF700F8AB26 /* CameraPositionSpline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183C005E19B8BCF700F8AB26 /* CameraPositionSpline.cpp */; };
 		183C006519B8BCF700F8AB26 /* EegeoPlatform.mm in Sources */ = {isa = PBXBuildFile; fileRef = 183C006019B8BCF700F8AB26 /* EegeoPlatform.mm */; };
 		183C006619B8BCF700F8AB26 /* OVREegeoCameraController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183C006219B8BCF700F8AB26 /* OVREegeoCameraController.cpp */; };
+		AE3CC5D41B216D1B009E5B76 /* OculusWorldDemo_Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE3CC5D01B216D1B009E5B76 /* OculusWorldDemo_Scene.cpp */; };
+		AE3CC5D51B216D1B009E5B76 /* OculusWorldDemo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE3CC5D11B216D1B009E5B76 /* OculusWorldDemo.cpp */; };
+		AE3CC5D61B216D1B009E5B76 /* OculusWorldDemo.rc in Resources */ = {isa = PBXBuildFile; fileRef = AE3CC5D21B216D1B009E5B76 /* OculusWorldDemo.rc */; };
+		AE3CC5D71B216D1B009E5B76 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE3CC5D31B216D1B009E5B76 /* Player.cpp */; };
+		AE98EB861B26A7D000A290A6 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E0A57719085FE50077EB8E /* OpenGL.framework */; };
+		AE98EB8E1B26ACBB00A290A6 /* LibOVR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE98EB8B1B26A9A900A290A6 /* LibOVR.framework */; };
 		E83DE6F419197F6A00EC97E1 /* OptionMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E83DE6F019197F6A00EC97E1 /* OptionMenu.cpp */; };
 		E83DE6F519197F6A00EC97E1 /* RenderProfiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E83DE6F219197F6A00EC97E1 /* RenderProfiler.cpp */; };
 		E879CFE9190866D1008CE996 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = E879CFE8190866D1008CE996 /* Assets */; };
@@ -25,36 +31,15 @@
 		E8E0A57319085ED00077EB8E /* Render_LoadTextureTGA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8E0A56019085ED00077EB8E /* Render_LoadTextureTGA.cpp */; };
 		E8E0A57419085ED00077EB8E /* Render_XmlSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8E0A56119085ED00077EB8E /* Render_XmlSceneLoader.cpp */; };
 		E8E0A57619085FC60077EB8E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E0A57519085FC60077EB8E /* AudioToolbox.framework */; };
-		E8E0A57819085FE50077EB8E /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E0A57719085FE50077EB8E /* OpenGL.framework */; };
 		E8E0A57A190860110077EB8E /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E0A579190860110077EB8E /* IOKit.framework */; };
-		E8E0A584190861120077EB8E /* OculusWorldDemo_Scene.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8E0A57B190861110077EB8E /* OculusWorldDemo_Scene.mm */; };
-		E8E0A585190861120077EB8E /* OculusWorldDemo.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8E0A57C190861110077EB8E /* OculusWorldDemo.mm */; };
 		E8E0A587190861120077EB8E /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8E0A580190861110077EB8E /* Player.cpp */; };
 		E8E0A58B190861220077EB8E /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8E0A589190861220077EB8E /* tinyxml2.cpp */; };
 		EE7D101E1A837F4500E63118 /* RobotArm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EE7D101C1A837F4500E63118 /* RobotArm.cpp */; };
-		EE8D30E61A811EC9009696A0 /* libovr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8D30D41A811E18009696A0 /* libovr.a */; };
 		EE9AC29A1A83B37D00F77538 /* libapps-on-maps-osx.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1802C9F719B9A87B003D4E4E /* libapps-on-maps-osx.dylib */; };
 		EE9AC29C1A83B5B300F77538 /* libapps-on-maps-osx.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1802C9F719B9A87B003D4E4E /* libapps-on-maps-osx.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		EE9AC2A01A83B5F100F77538 /* libhttpxx.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 183C005A19B8BBFA00F8AB26 /* libhttpxx.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		EE9AC2A11A83B62600F77538 /* libhttpxx.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 183C005A19B8BBFA00F8AB26 /* libhttpxx.dylib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		EE8D30D31A811E18009696A0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EE8D30CF1A811E18009696A0 /* LibOVR.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E82D4CD31906FE640070CB3F;
-			remoteInfo = LibOVR;
-		};
-		EE8D30E11A811E3A009696A0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EE8D30CF1A811E18009696A0 /* LibOVR.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E82D4CD21906FE640070CB3F;
-			remoteInfo = LibOVR;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		1888870A19B073FA006B323B /* CopyFiles */ = {
@@ -79,9 +64,15 @@
 		183C006119B8BCF700F8AB26 /* EegeoPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EegeoPlatform.h; sourceTree = "<group>"; };
 		183C006219B8BCF700F8AB26 /* OVREegeoCameraController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OVREegeoCameraController.cpp; sourceTree = "<group>"; };
 		183C006319B8BCF700F8AB26 /* OVREegeoCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OVREegeoCameraController.h; sourceTree = "<group>"; };
-		E83DE6F019197F6A00EC97E1 /* OptionMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OptionMenu.cpp; path = ../../../../CommonSrc/Util/OptionMenu.cpp; sourceTree = "<group>"; };
+		AE3CC5D01B216D1B009E5B76 /* OculusWorldDemo_Scene.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = OculusWorldDemo_Scene.cpp; path = ../../../OculusWorldDemo_Scene.cpp; sourceTree = "<group>"; };
+		AE3CC5D11B216D1B009E5B76 /* OculusWorldDemo.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = OculusWorldDemo.cpp; path = ../../../OculusWorldDemo.cpp; sourceTree = "<group>"; };
+		AE3CC5D21B216D1B009E5B76 /* OculusWorldDemo.rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = OculusWorldDemo.rc; path = ../../../OculusWorldDemo.rc; sourceTree = "<group>"; };
+		AE3CC5D31B216D1B009E5B76 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = ../../../Player.cpp; sourceTree = "<group>"; };
+		AE98EB891B26A94B00A290A6 /* LibOVR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LibOVR.framework; path = "/Users/edave/repositories/oculus-sdk/LibOVR/Projects/Mac/../../Lib/Mac/Debug/LibOVR.framework"; sourceTree = "<absolute>"; };
+		AE98EB8B1B26A9A900A290A6 /* LibOVR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LibOVR.framework; path = "/Users/edave/repositories/oculus-sdk/LibOVR/Projects/Mac/../../Lib/Mac/Debug/LibOVR.framework"; sourceTree = "<absolute>"; };
+		E83DE6F019197F6A00EC97E1 /* OptionMenu.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = OptionMenu.cpp; path = ../../../../CommonSrc/Util/OptionMenu.cpp; sourceTree = "<group>"; };
 		E83DE6F119197F6A00EC97E1 /* OptionMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionMenu.h; path = ../../../../CommonSrc/Util/OptionMenu.h; sourceTree = "<group>"; };
-		E83DE6F219197F6A00EC97E1 /* RenderProfiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RenderProfiler.cpp; path = ../../../../CommonSrc/Util/RenderProfiler.cpp; sourceTree = "<group>"; };
+		E83DE6F219197F6A00EC97E1 /* RenderProfiler.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = RenderProfiler.cpp; path = ../../../../CommonSrc/Util/RenderProfiler.cpp; sourceTree = "<group>"; };
 		E83DE6F319197F6A00EC97E1 /* RenderProfiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RenderProfiler.h; path = ../../../../CommonSrc/Util/RenderProfiler.h; sourceTree = "<group>"; };
 		E879CFE8190866D1008CE996 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets; path = ../../../Assets; sourceTree = "<group>"; };
 		E8859040192DBE2E00D93D73 /* ../../../../Oculus.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ../../../../Oculus.icns; sourceTree = "<group>"; };
@@ -114,8 +105,6 @@
 		E8E0A57519085FC60077EB8E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E8E0A57719085FE50077EB8E /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		E8E0A579190860110077EB8E /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		E8E0A57B190861110077EB8E /* OculusWorldDemo_Scene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = OculusWorldDemo_Scene.mm; path = ../../../OculusWorldDemo_Scene.mm; sourceTree = "<group>"; };
-		E8E0A57C190861110077EB8E /* OculusWorldDemo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = OculusWorldDemo.mm; path = ../../../OculusWorldDemo.mm; sourceTree = "<group>"; };
 		E8E0A57D190861110077EB8E /* OculusWorldDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OculusWorldDemo.h; path = ../../../OculusWorldDemo.h; sourceTree = "<group>"; };
 		E8E0A580190861110077EB8E /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = ../../../Player.cpp; sourceTree = "<group>"; };
 		E8E0A581190861110077EB8E /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = ../../../Player.h; sourceTree = "<group>"; };
@@ -125,7 +114,6 @@
 		E8E0A58E190865DA0077EB8E /* OculusWorldDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OculusWorldDemo-Info.plist"; sourceTree = SOURCE_ROOT; };
 		EE7D101C1A837F4500E63118 /* RobotArm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RobotArm.cpp; sourceTree = "<group>"; };
 		EE7D101D1A837F4500E63118 /* RobotArm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RobotArm.h; sourceTree = "<group>"; };
-		EE8D30CF1A811E18009696A0 /* LibOVR.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LibOVR.xcodeproj; path = ../../../../../LibOVR/Projects/Mac/Xcode/LibOVR.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,13 +121,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE9AC2A11A83B62600F77538 /* libhttpxx.dylib in Frameworks */,
-				EE9AC29A1A83B37D00F77538 /* libapps-on-maps-osx.dylib in Frameworks */,
-				EE8D30E61A811EC9009696A0 /* libovr.a in Frameworks */,
+				AE98EB8E1B26ACBB00A290A6 /* LibOVR.framework in Frameworks */,
+				AE98EB861B26A7D000A290A6 /* OpenGL.framework in Frameworks */,
 				E8E0A57A190860110077EB8E /* IOKit.framework in Frameworks */,
-				E8E0A57819085FE50077EB8E /* OpenGL.framework in Frameworks */,
 				E8E0A57619085FC60077EB8E /* AudioToolbox.framework in Frameworks */,
 				E8CC57CB1908266300EEEC84 /* Cocoa.framework in Frameworks */,
+				EE9AC2A11A83B62600F77538 /* libhttpxx.dylib in Frameworks */,
+				EE9AC29A1A83B37D00F77538 /* libapps-on-maps-osx.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,12 +164,13 @@
 		E8CC57BE1908266300EEEC84 = {
 			isa = PBXGroup;
 			children = (
-				EE8D30CF1A811E18009696A0 /* LibOVR.xcodeproj */,
 				183C005D19B8BCF700F8AB26 /* eeGeo */,
 				E8E0A589190861220077EB8E /* tinyxml2.cpp */,
 				E8E0A58A190861220077EB8E /* tinyxml2.h */,
-				E8E0A57B190861110077EB8E /* OculusWorldDemo_Scene.mm */,
-				E8E0A57C190861110077EB8E /* OculusWorldDemo.mm */,
+				AE3CC5D01B216D1B009E5B76 /* OculusWorldDemo_Scene.cpp */,
+				AE3CC5D11B216D1B009E5B76 /* OculusWorldDemo.cpp */,
+				AE3CC5D21B216D1B009E5B76 /* OculusWorldDemo.rc */,
+				AE3CC5D31B216D1B009E5B76 /* Player.cpp */,
 				E8E0A57D190861110077EB8E /* OculusWorldDemo.h */,
 				E8E0A580190861110077EB8E /* Player.cpp */,
 				E8E0A581190861110077EB8E /* Player.h */,
@@ -204,6 +193,8 @@
 		E8CC57C91908266300EEEC84 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE98EB8B1B26A9A900A290A6 /* LibOVR.framework */,
+				AE98EB891B26A94B00A290A6 /* LibOVR.framework */,
 				E8CC57D11908266300EEEC84 /* Supporting Files */,
 				1802C9F719B9A87B003D4E4E /* libapps-on-maps-osx.dylib */,
 				183C005A19B8BBFA00F8AB26 /* libhttpxx.dylib */,
@@ -283,14 +274,6 @@
 			path = ../../../../CommonSrc/Render;
 			sourceTree = "<group>";
 		};
-		EE8D30D01A811E18009696A0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EE8D30D41A811E18009696A0 /* libovr.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -306,7 +289,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				EE8D30E21A811E3A009696A0 /* PBXTargetDependency */,
 			);
 			name = OculusWorldDemo;
 			productName = OculusWorldDemo;
@@ -319,7 +301,7 @@
 		E8CC57BF1908266300EEEC84 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Oculus VR Inc.";
 			};
 			buildConfigurationList = E8CC57C21908266300EEEC84 /* Build configuration list for PBXProject "OculusWorldDemo" */;
@@ -333,12 +315,6 @@
 			mainGroup = E8CC57BE1908266300EEEC84;
 			productRefGroup = E8CC57C81908266300EEEC84 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = EE8D30D01A811E18009696A0 /* Products */;
-					ProjectRef = EE8D30CF1A811E18009696A0 /* LibOVR.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				E8CC57C61908266300EEEC84 /* OculusWorldDemo */,
@@ -346,21 +322,12 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		EE8D30D41A811E18009696A0 /* libovr.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libovr.a;
-			remoteRef = EE8D30D31A811E18009696A0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		E8CC57C51908266300EEEC84 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE3CC5D61B216D1B009E5B76 /* OculusWorldDemo.rc in Resources */,
 				E879CFE9190866D1008CE996 /* Assets in Resources */,
 				E8859041192DBE2E00D93D73 /* ../../../../Oculus.icns in Resources */,
 			);
@@ -374,8 +341,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8E0A57019085ED00077EB8E /* Render_GL_Device.cpp in Sources */,
-				E8E0A585190861120077EB8E /* OculusWorldDemo.mm in Sources */,
-				E8E0A584190861120077EB8E /* OculusWorldDemo_Scene.mm in Sources */,
 				E83DE6F419197F6A00EC97E1 /* OptionMenu.cpp in Sources */,
 				183C006519B8BCF700F8AB26 /* EegeoPlatform.mm in Sources */,
 				E8E0A56919085ED00077EB8E /* Platform.cpp in Sources */,
@@ -384,26 +349,21 @@
 				EE7D101E1A837F4500E63118 /* RobotArm.cpp in Sources */,
 				E8E0A57219085ED00077EB8E /* Render_LoadTextureDDS.cpp in Sources */,
 				E8E0A58B190861220077EB8E /* tinyxml2.cpp in Sources */,
+				AE3CC5D41B216D1B009E5B76 /* OculusWorldDemo_Scene.cpp in Sources */,
 				183C006419B8BCF700F8AB26 /* CameraPositionSpline.cpp in Sources */,
 				E8E0A587190861120077EB8E /* Player.cpp in Sources */,
 				E8E0A56819085ED00077EB8E /* OSX_WavPlayer.cpp in Sources */,
 				E8E0A56F19085ED00077EB8E /* Render_Device.cpp in Sources */,
+				AE3CC5D71B216D1B009E5B76 /* Player.cpp in Sources */,
 				E8E0A57319085ED00077EB8E /* Render_LoadTextureTGA.cpp in Sources */,
 				183C006619B8BCF700F8AB26 /* OVREegeoCameraController.cpp in Sources */,
 				E8E0A56719085ED00077EB8E /* OSX_Platform.mm in Sources */,
+				AE3CC5D51B216D1B009E5B76 /* OculusWorldDemo.cpp in Sources */,
 				E83DE6F519197F6A00EC97E1 /* RenderProfiler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		EE8D30E21A811E3A009696A0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = LibOVR;
-			targetProxy = EE8D30E11A811E3A009696A0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		E8CC57F61908266300EEEC84 /* Debug */ = {
@@ -439,7 +399,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -473,7 +433,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -481,18 +441,19 @@
 		E8CC57F91908266300EEEC84 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/../../../Bin/Mac/Xcode/$(CONFIGURATION)";
 				CONFIGURATION_TEMP_DIR = "$(SRCROOT)/../../../Bin/Mac/Xcode/$(CONFIGURATION)";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = OVR_BUILD_DEBUG;
+				GCC_STRICT_ALIASING = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../../../../../LibOVR/Src/",
+					"$(SRCROOT)/../../../../../LibOVRKernel/Src",
 					"$(SRCROOT)/../../../../../LibOVR/Include/",
 					"$(SRCROOT)/../../../../../3rdParty/TinyXml/",
 					"$(SRCROOT)/../../../../../eegeo-platform/platform/**",
@@ -504,11 +465,14 @@
 					"$(SRCROOT)/../../../../../LibOVR/Lib/Mac/Xcode/$(CONFIGURATION)",
 					"$(SRCROOT)/../../../../../eegeo-platform/",
 					/usr/local/lib,
+					"/Users/edave/repositories/oculus-sdk/eegeo-platform",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OBJROOT = "$(SRCROOT)/../../../Bin/Mac/Xcode/$(CONFIGURATION)";
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-lOVRKernel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.10;
 				SYMROOT = "$(SRCROOT)/../../../Bin/Mac/Xcode/$(CONFIGURATION)";
 				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
@@ -518,19 +482,20 @@
 		E8CC57FA1908266300EEEC84 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/../../../Bin/Mac/Xcode/$(CONFIGURATION)";
 				CONFIGURATION_TEMP_DIR = "$(SRCROOT)/../../../Bin/Mac/Xcode/$(CONFIGURATION)";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_STRICT_ALIASING = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../../../../../LibOVR/Src/",
+					"$(SRCROOT)/../../../../../LibOVRKernel/Src",
 					"$(SRCROOT)/../../../../../LibOVR/Include/",
 					"$(SRCROOT)/../../../../../3rdParty/TinyXml/",
 					"$(SRCROOT)/../../../../../eegeo-platform/platform/**",
@@ -542,11 +507,14 @@
 					"$(SRCROOT)/../../../../../LibOVR/Lib/Mac/Xcode/$(CONFIGURATION)",
 					"$(SRCROOT)/../../../../../eegeo-platform/",
 					/usr/local/lib,
+					"/Users/edave/repositories/oculus-sdk/eegeo-platform",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OBJROOT = "$(SRCROOT)/../../../Bin/Mac/Xcode/$(CONFIGURATION)";
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-lOVRKernel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.10;
 				SYMROOT = "$(SRCROOT)/../../../Bin/Mac/Xcode/$(CONFIGURATION)";
 				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
